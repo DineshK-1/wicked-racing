@@ -52,8 +52,22 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        DetectSlip();
         
 
+    }
+
+    private void DetectSlip()
+    {
+        float slipLat;
+        float slipLong;
+        float speed = rb.velocity.magnitude * 3.6f;
+
+        rearLeft.GetGroundHit(out WheelHit wheelData);
+        slipLat = wheelData.sidewaysSlip;
+        slipLong = wheelData.forwardSlip;
+
+        Debug.Log("Speed: "+ speed.ToString() + " Lat:"+slipLat.ToString()+ " Long:"+slipLong.ToString());
     }
 
     private void UpdateWheels()
@@ -91,9 +105,8 @@ public class CarController : MonoBehaviour
 
     void HandleMotor()
     {
-        Debug.Log(rearLeft.motorTorque);
-        rearLeft.motorTorque = verticalInput * motorForce * 500 * Time.deltaTime;
-        rearRight.motorTorque = verticalInput * motorForce * 500 * Time.deltaTime;
+        rearLeft.motorTorque = verticalInput * motorForce;
+        rearRight.motorTorque = verticalInput * motorForce; 
 
         if (isBraking)
         {
