@@ -127,6 +127,8 @@ public class CarController : MonoBehaviour
         horizontalInput = Input.GetAxis(HORIZONTAL);
         verticalInput = Input.GetAxis(VERTICAL);
         isHandBraking = Input.GetKey(KeyCode.Space);
+        isHandBraking = Input.GetKey(KeyCode.C);
+        /*
         if (verticalInput < 0)
         {
             isBraking = true;
@@ -135,5 +137,6 @@ public class CarController : MonoBehaviour
         {
             isBraking = false;
         }
+        */
     }
 }
