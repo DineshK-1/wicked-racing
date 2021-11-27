@@ -91,8 +91,9 @@ public class CarController : MonoBehaviour
 
     void HandleMotor()
     {
-        rearLeft.motorTorque = verticalInput * motorForce;
-        rearRight.motorTorque = verticalInput * motorForce;
+        Debug.Log(rearLeft.motorTorque);
+        rearLeft.motorTorque = verticalInput * motorForce * 500 * Time.deltaTime;
+        rearRight.motorTorque = verticalInput * motorForce * 500 * Time.deltaTime;
 
         if (isBraking)
         {
