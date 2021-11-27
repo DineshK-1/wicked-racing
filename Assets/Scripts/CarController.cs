@@ -15,6 +15,9 @@ public class CarController : MonoBehaviour
     private bool isBraking;
     private bool isHandBraking;
 
+    private Rigidbody rb;
+    [SerializeField] private Vector3 centerOfMass;
+
     [SerializeField] public float maxRpm;
     [SerializeField] public float maxTorque;
     [SerializeField] public float Torque;
@@ -35,6 +38,12 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform rearRightTransform;
 
     public float speed;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = centerOfMass;
+    }
 
     private void FixedUpdate()
     {
