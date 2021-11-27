@@ -58,29 +58,21 @@ public class CarController : MonoBehaviour
 
     private void UpdateWheels()
     {
-        Vector3 pos1;
-        Quaternion rot1;
-        frontLeft.GetWorldPose(out pos1, out rot1);
-        frontLeftTransform.position = pos1;
-        frontLeftTransform.rotation = rot1;
+        UpdateWheelPose(frontLeft, frontLeftTransform);
+        UpdateWheelPose(frontRight, frontRightTransform);
+        UpdateWheelPose(rearLeft, rearLeftTransform);
+        UpdateWheelPose(rearRight, rearRightTransform);
+    }
 
-        Vector3 pos2;
-        Quaternion rot2;
-        frontRight.GetWorldPose(out pos2, out rot2);
-        frontRightTransform.position = pos2;
-        frontRightTransform.rotation = rot2;
+    private void UpdateWheelPose(WheelCollider _collider, Transform _transform)
+    {
+        Vector3 _pos = _transform.position;
+        Quaternion _quat = _transform.rotation;
 
-        Vector3 pos3;
-        Quaternion rot3;
-        rearLeft.GetWorldPose(out pos3, out rot3);
-        rearLeftTransform.position = pos3;
-        rearLeftTransform.rotation = rot3;
+        _collider.GetWorldPose(out _pos, out _quat);
 
-        Vector3 pos4;
-        Quaternion rot4;
-        rearRight.GetWorldPose(out pos4, out rot4);
-        rearRightTransform.position = pos4;
-        rearRightTransform.rotation = rot4;
+        _transform.position = _pos;
+        _transform.rotation = _quat;
     }
 
     private void HandleSteering()
