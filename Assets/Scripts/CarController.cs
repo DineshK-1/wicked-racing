@@ -59,7 +59,6 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-       
         torqueText.text = "Torque: " + currentMotorForce.ToString();
 
     }
@@ -208,6 +207,7 @@ public class CarController : MonoBehaviour
         verticalInput = Input.GetAxis(VERTICAL);
         isHandBraking = Input.GetKey(KeyCode.Space);
         isBraking = Input.GetKey(KeyCode.C);
+        
         /*
         if (verticalInput < 0)
         {
