@@ -90,15 +90,24 @@ public class CarController : MonoBehaviour
 
     private void DetectSlip()
     {
-        float slipLat;
-        float slipLong;
+        float rearSlipLat;
+        float rearSlipLong;
+
+        float frontSlipLat;
+        float frontSlipLong;
+
         float speed = rb.velocity.magnitude * 3.6f;
 
         rearLeft.GetGroundHit(out WheelHit wheelData);
-        slipLat = wheelData.sidewaysSlip;
-        slipLong = wheelData.forwardSlip;
+        frontLeft.GetGroundHit(out WheelHit wheelData2);
 
-        Debug.Log("Speed: "+ speed.ToString() + " Lat:"+slipLat.ToString()+ " Long:"+slipLong.ToString());
+        rearSlipLat = wheelData.sidewaysSlip;
+        rearSlipLong = wheelData.forwardSlip;
+
+        frontSlipLat = wheelData2.sidewaysSlip;
+        frontSlipLong = wheelData2.forwardSlip;
+
+        Debug.Log("Speed: "+ speed.ToString() + " RearWheel Forward Slip:"+ rearSlipLong.ToString()+ " RearWheel Sideways Slip:"+ rearSlipLat.ToString() + " FrontWheel Forward Slip:" + frontSlipLong.ToString() + " FrontWheel Sideways Slip:" + frontSlipLat.ToString());
     }
 
     private void UpdateWheels()
