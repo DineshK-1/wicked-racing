@@ -27,7 +27,7 @@ public class CarController : MonoBehaviour
     [SerializeField] public float Torque;
     [SerializeField] public float Rpm;
     [SerializeField] public float motorForce;
-    [SerializeField] public float breakForce;
+    [SerializeField] public float brakeForce;
     [SerializeField] public float handBreakForce;
     [SerializeField] public float maxSteerAngle;
 
@@ -64,7 +64,7 @@ public class CarController : MonoBehaviour
     private void CurrentCalculate()
     {
         currentMotorForce = verticalInput * motorForce;
-        currentBrakeForce = Mathf.Abs(verticalInput * motorForce);
+        //currentBrakeForce = Mathf.Abs(verticalInput * motorForce);
     }
 
     private void CalculateBools()
@@ -106,8 +106,8 @@ public class CarController : MonoBehaviour
 
         frontSlipLat = wheelData2.sidewaysSlip;
         frontSlipLong = wheelData2.forwardSlip;
-        //+" RW Sideways Slip:" + rearSlipLat.ToString()++ " FW Sideways Slip:" + frontSlipLat.ToString()
-        Debug.Log("Speed: "+ speed.ToString() + " RW Forward Slip:"+ rearSlipLong.ToString()+ " FW Forward Slip:" + frontSlipLong.ToString() );
+        Debug.Log("Speed: " + speed.ToString() + " RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
+        // Debug.Log("Speed: "+ speed.ToString() + " RW Forward Slip:"+ rearSlipLong.ToString() +" RW Sideways Slip:" + rearSlipLat.ToString() + " FW Forward Slip:" + frontSlipLong.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
     }
 
     private void UpdateWheels()
@@ -150,10 +150,10 @@ public class CarController : MonoBehaviour
 
         if (isBraking)
         {
-            frontLeft.brakeTorque = currentBrakeForce;
-            frontRight.brakeTorque = currentBrakeForce;
-            rearLeft.brakeTorque = currentBrakeForce;
-            rearRight.brakeTorque = currentBrakeForce;
+            frontLeft.brakeTorque = brakeForce;
+            frontRight.brakeTorque = brakeForce;
+            rearLeft.brakeTorque = brakeForce;
+            rearRight.brakeTorque = brakeForce;
         }
         else
         {
