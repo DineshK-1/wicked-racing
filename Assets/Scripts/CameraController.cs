@@ -43,21 +43,21 @@ public class CameraController : MonoBehaviour
     }
     private void UpdateOffset()
     {
-        Vector3 _aOffset = new Vector3(Offset.x, Offset.y, Offset.z - 0.4f);
+        Vector3 _aOffset = new Vector3(Offset.x, Offset.y, Offset.z - 0.3f);
         Vector3 _bOffset = new Vector3(Offset.x, Offset.y, Offset.z + 0.2f);
 
 
         if (_carController.isAccelerating)
         {
-            currentOffset = Vector3.Lerp(currentOffset, _aOffset, followSpeed * Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, _aOffset,  Time.deltaTime);
         }
         else if (_carController.Braking)
         {
-            currentOffset = Vector3.Lerp(currentOffset, _bOffset, followSpeed * Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, _bOffset,  Time.deltaTime);
         }
         else
         {
-            currentOffset = Vector3.Lerp(currentOffset, Offset, followSpeed * Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, Offset,  Time.deltaTime);
         }
     }
 
