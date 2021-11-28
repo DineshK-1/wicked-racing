@@ -82,6 +82,10 @@ public class CarController : MonoBehaviour
         {
             Braking = true;
         }
+        else
+        {
+            Braking = false;
+        }
     }
 
     private void DetectSlip()
