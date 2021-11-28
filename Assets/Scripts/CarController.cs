@@ -59,7 +59,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        speedText.text = "Speed: " + speed.ToString();
+       
         torqueText.text = "Torque: " + currentMotorForce.ToString();
 
     }
@@ -113,6 +113,7 @@ public class CarController : MonoBehaviour
         
 
         float speed = rb.velocity.magnitude * 3.6f;
+        speedText.text = "Speed: " + speed.ToString();
 
         rearLeft.GetGroundHit(out WheelHit wheelData);
         frontLeft.GetGroundHit(out WheelHit wheelData2);
