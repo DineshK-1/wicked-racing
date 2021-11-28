@@ -126,10 +126,10 @@ public class CarController : MonoBehaviour
         frontSlipLong = wheelData2.forwardSlip;
 
         FLForwardSlipText.text = "FL Forward Slip:" + frontSlipLong.ToString();
-        FLSidewaySlipText.text = "FL Sideways Slip:" + frontSlipLat.ToString();
+        FLSidewaySlipText.text = "FL Sideways Slip:" + frontSlipLat.ToString() + " RPM:" + frontLeft.rpm;
 
         RLForwardSlipText.text = "RL Forward Slip:" + rearSlipLong.ToString();
-        RLSidewaySlipText.text = "RL Sideways Slip:" + rearSlipLat.ToString();
+        RLSidewaySlipText.text = "RL Sideways Slip:" + rearSlipLat.ToString() + " RPM:" + rearLeft.rpm;
 
         //Debug.Log( "RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
         Debug.Log("RW Sideways Slip:" + rearSlipLat.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
