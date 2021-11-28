@@ -12,8 +12,12 @@ public class CarController : MonoBehaviour
     private float verticalInput;
     private float currentSteerAngle;
     private float currentBrakeForce;
+    private float currentMotorForce;
     private bool isBraking;
     private bool isHandBraking;
+
+    public bool isAccelerating;
+    public bool Braking;
 
     private Rigidbody rb;
     [SerializeField] private Vector3 centerOfMass;
@@ -39,6 +43,7 @@ public class CarController : MonoBehaviour
 
     public float speed;
 
+   
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,14 +52,36 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        CurrentCalculate();
+        CalculateBools();
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
         DetectSlip();
-        
+    }
 
+    private void CurrentCalculate()
+    {
+        currentMotorForce = verticalInput * motorForce;
+        currentBrakeForce = Mathf.Abs(verticalInput * motorForce);
+    }
+
+    private void CalculateBools()
+    {
+        if (currentMotorForce > 0)
+        {
+            isAccelerating = true;
+        }
+        else
+        {
+            isAccelerating = false;
+        }
+
+        if (currentBrakeForce > 0)
+        {
+            Braking = true;
+        }
     }
 
     private void DetectSlip()
@@ -105,15 +132,15 @@ public class CarController : MonoBehaviour
 
     void HandleMotor()
     {
-        rearLeft.motorTorque = verticalInput * motorForce;
-        rearRight.motorTorque = verticalInput * motorForce; 
+        rearLeft.motorTorque = currentMotorForce;
+        rearRight.motorTorque = currentMotorForce; 
 
         if (isBraking)
         {
-            frontLeft.brakeTorque = Mathf.Abs(verticalInput) * breakForce;
-            frontRight.brakeTorque = Mathf.Abs(verticalInput) * breakForce;
-            rearLeft.brakeTorque = Mathf.Abs(verticalInput) * breakForce;
-            rearRight.brakeTorque = Mathf.Abs(verticalInput) * breakForce;
+            frontLeft.brakeTorque = currentBrakeForce;
+            frontRight.brakeTorque = currentBrakeForce;
+            rearLeft.brakeTorque = currentBrakeForce;
+            rearRight.brakeTorque = currentBrakeForce;
         }
         else
         {
