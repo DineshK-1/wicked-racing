@@ -106,8 +106,8 @@ public class CarController : MonoBehaviour
 
         frontSlipLat = wheelData2.sidewaysSlip;
         frontSlipLong = wheelData2.forwardSlip;
-
-        Debug.Log("Speed: "+ speed.ToString() + " RearWheel Forward Slip:"+ rearSlipLong.ToString()+ " RearWheel Sideways Slip:"+ rearSlipLat.ToString() + " FrontWheel Forward Slip:" + frontSlipLong.ToString() + " FrontWheel Sideways Slip:" + frontSlipLat.ToString());
+        //+" RW Sideways Slip:" + rearSlipLat.ToString()++ " FW Sideways Slip:" + frontSlipLat.ToString()
+        Debug.Log("Speed: "+ speed.ToString() + " RW Forward Slip:"+ rearSlipLong.ToString()+ " FW Forward Slip:" + frontSlipLong.ToString() );
     }
 
     private void UpdateWheels()
@@ -180,7 +180,7 @@ public class CarController : MonoBehaviour
         horizontalInput = Input.GetAxis(HORIZONTAL);
         verticalInput = Input.GetAxis(VERTICAL);
         isHandBraking = Input.GetKey(KeyCode.Space);
-        isHandBraking = Input.GetKey(KeyCode.C);
+        isBraking = Input.GetKey(KeyCode.C);
         /*
         if (verticalInput < 0)
         {
