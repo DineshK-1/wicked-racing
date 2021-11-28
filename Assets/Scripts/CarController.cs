@@ -78,7 +78,7 @@ public class CarController : MonoBehaviour
             isAccelerating = false;
         }
 
-        if (currentBrakeForce > 0)
+        if (isBraking || isHandBraking)
         {
             Braking = true;
         }
