@@ -178,7 +178,9 @@ public class CarController : MonoBehaviour
     void HandleMotor()
     {
         rearLeft.motorTorque = currentMotorForce;
-        rearRight.motorTorque = currentMotorForce; 
+        rearRight.motorTorque = currentMotorForce;
+        frontLeft.motorTorque = currentMotorForce;
+        frontRight.motorTorque = currentMotorForce;
 
         if (isBraking)
         {
