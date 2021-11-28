@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
@@ -43,7 +44,20 @@ public class CarController : MonoBehaviour
 
     public float speed;
 
-   
+    public Text speedText;
+    public Text torqueText;
+    public Text FLForwardSlipText;
+    public Text FLSidewaySlipText;
+    public Text RLForwardSlipText;
+    public Text RLSidewaySlipText;
+
+    private void Update()
+    {
+        speedText.text = "Speed: " + speed.ToString();
+        torqueText.text = "Torque: " + currentMotorForce.ToString();
+
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -101,13 +115,23 @@ public class CarController : MonoBehaviour
         rearLeft.GetGroundHit(out WheelHit wheelData);
         frontLeft.GetGroundHit(out WheelHit wheelData2);
 
+        
+
         rearSlipLat = wheelData.sidewaysSlip;
         rearSlipLong = wheelData.forwardSlip;
 
         frontSlipLat = wheelData2.sidewaysSlip;
         frontSlipLong = wheelData2.forwardSlip;
-        Debug.Log("Speed: " + speed.ToString() + " RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
-        // Debug.Log("Speed: "+ speed.ToString() + " RW Forward Slip:"+ rearSlipLong.ToString() +" RW Sideways Slip:" + rearSlipLat.ToString() + " FW Forward Slip:" + frontSlipLong.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
+
+        FLForwardSlipText.text = "FL Forward Slip:" + frontSlipLong.ToString();
+        FLSidewaySlipText.text = "FL Sideways Slip:" + frontSlipLat.ToString();
+
+        RLForwardSlipText.text = "RL Forward Slip:" + rearSlipLong.ToString();
+        RLSidewaySlipText.text = "RL Sideways Slip:" + rearSlipLat.ToString();
+
+        //Debug.Log( "RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
+        Debug.Log("RW Sideways Slip:" + rearSlipLat.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
+        // Debug.Log("RW Forward Slip:"+ rearSlipLong.ToString() +" RW Sideways Slip:" + rearSlipLat.ToString() + " FW Forward Slip:" + frontSlipLong.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
     }
 
     private void UpdateWheels()
