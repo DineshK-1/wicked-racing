@@ -44,6 +44,12 @@ public class CarController : MonoBehaviour
 
     public float speed;
 
+    public float rearSlipLat;
+    public float rearSlipLong;
+
+    public float frontSlipLat;
+    public float frontSlipLong;
+
     public Text speedText;
     public Text torqueText;
     public Text FLForwardSlipText;
@@ -104,11 +110,7 @@ public class CarController : MonoBehaviour
 
     private void DetectSlip()
     {
-        float rearSlipLat;
-        float rearSlipLong;
-
-        float frontSlipLat;
-        float frontSlipLong;
+        
 
         float speed = rb.velocity.magnitude * 3.6f;
 
