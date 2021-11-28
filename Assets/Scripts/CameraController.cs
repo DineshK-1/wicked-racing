@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 currentOffset;
 
+    public float turnSpeed = 2f;
     public float followSpeed = 10;
     public float lookSpeed = 10;
 
@@ -49,15 +50,15 @@ public class CameraController : MonoBehaviour
 
         if (_carController.isAccelerating)
         {
-            currentOffset = Vector3.Lerp(currentOffset, _aOffset,  Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, _aOffset, turnSpeed * Time.deltaTime);
         }
         else if (_carController.Braking)
         {
-            currentOffset = Vector3.Lerp(currentOffset, _bOffset,  Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, _bOffset, turnSpeed * Time.deltaTime);
         }
         else
         {
-            currentOffset = Vector3.Lerp(currentOffset, Offset,  Time.deltaTime);
+            currentOffset = Vector3.Lerp(currentOffset, Offset, turnSpeed * Time.deltaTime);
         }
     }
 
