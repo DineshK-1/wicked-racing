@@ -50,6 +50,8 @@ public class CarController : MonoBehaviour
     public float frontSlipLat;
     public float frontSlipLong;
 
+    public Vector3 CamOffset;
+
     public Text speedText;
     public Text torqueText;
     public Text FLForwardSlipText;

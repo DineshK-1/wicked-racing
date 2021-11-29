@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
 
     private CarController _carController;
 
-    public Vector3 Offset;
+    private Vector3 Offset;
 
     private Vector3 currentOffset;
 
@@ -20,10 +20,11 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        currentOffset = Offset;
-
         _carController = objectToFollow.GetComponent<CarController>();
         objectToFollowT = objectToFollow.transform;
+
+        Offset = _carController.CamOffset;
+        currentOffset = Offset;
     }
 
     public void LookAtTarget()
