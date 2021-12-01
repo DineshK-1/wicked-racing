@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+    public InputManager IM;
 
-    private float horizontalInput;
-    private float verticalInput;
+    private float SteerInput;
+    private float ThrottleInput;
+    private float BrakeInput;
+
     private float currentSteerAngle;
     private float currentBrakeForce;
     private float currentMotorForce;
@@ -79,7 +80,6 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CurrentCalculate();
         CalculateBools();
         GetInput();
         HandleMotor();
@@ -88,10 +88,15 @@ public class CarController : MonoBehaviour
         DetectSlip();
     }
 
-    private void CurrentCalculate()
+    void GetInput()
     {
-        currentMotorForce = verticalInput * motorForce;
-        //currentBrakeForce = Mathf.Abs(verticalInput * motorForce);
+        ThrottleInput = IM.Throttle;
+        BrakeInput = IM.Brake;
+        SteerInput = IM.Steer;
+
+        currentMotorForce = ThrottleInput * motorForce;
+        currentBrakeForce = BrakeInput * brakeForce;
+        currentSteerAngle = SteerInput * maxSteerAngle;
     }
 
     private void CalculateBools()
@@ -117,8 +122,6 @@ public class CarController : MonoBehaviour
 
     private void DetectSlip()
     {
-        
-
         float speed = rb.velocity.magnitude * 3.6f;
         speedText.text = "Speed: " + speed.ToString();
 
@@ -165,7 +168,6 @@ public class CarController : MonoBehaviour
 
     private void HandleSteering()
     {
-        currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeft.steerAngle = currentSteerAngle;
         frontRight.steerAngle = currentSteerAngle;
     }
@@ -186,10 +188,10 @@ public class CarController : MonoBehaviour
 
         if (isBraking)
         {
-            frontLeft.brakeTorque = brakeForce;
-            frontRight.brakeTorque = brakeForce;
-            rearLeft.brakeTorque = brakeForce;
-            rearRight.brakeTorque = brakeForce;
+            frontLeft.brakeTorque = currentBrakeForce;
+            frontRight.brakeTorque = currentBrakeForce;
+            rearLeft.brakeTorque = currentBrakeForce;
+            rearRight.brakeTorque = currentBrakeForce;
         }
         else
         {
@@ -209,24 +211,5 @@ public class CarController : MonoBehaviour
             rearRight.brakeTorque = 0;
         }
        
-    }
-
-    void GetInput()
-    {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-        isHandBraking = Input.GetKey(KeyCode.Space);
-        isBraking = Input.GetKey(KeyCode.C);
-        
-        /*
-        if (verticalInput < 0)
-        {
-            isBraking = true;
-        }
-        else
-        {
-            isBraking = false;
-        }
-        */
     }
 }
