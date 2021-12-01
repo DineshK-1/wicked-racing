@@ -62,6 +62,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.KeypadMinus)){
             motorForce -= 50;
         }
@@ -69,6 +70,7 @@ public class CarController : MonoBehaviour
             motorForce += 50;
         }
         torqueText.text = "Torque: " + currentMotorForce.ToString();
+        */
 
     }
 
@@ -143,7 +145,7 @@ public class CarController : MonoBehaviour
         RLSidewaySlipText.text = "RL Sideways Slip:" + rearSlipLat.ToString();
 
         //Debug.Log( "RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
-        Debug.Log("RW Sideways Slip:" + rearSlipLat.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
+        //Debug.Log("RW Sideways Slip:" + rearSlipLat.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
         // Debug.Log("RW Forward Slip:"+ rearSlipLong.ToString() +" RW Sideways Slip:" + rearSlipLat.ToString() + " FW Forward Slip:" + frontSlipLong.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
     }
 
