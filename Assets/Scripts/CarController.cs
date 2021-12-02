@@ -70,12 +70,6 @@ public class CarController : MonoBehaviour
     public Text FLSidewaySlipText;
     public Text RLForwardSlipText;
     public Text RLSidewaySlipText;
-
-    private void Update()
-    {
-        torqueText.text = "Torque: " + currentMotorForce.ToString();
-    }
-
     private void Start()
     {
         Colliders = gameObject.transform.Find("WheelColliders").gameObject;
@@ -95,6 +89,11 @@ public class CarController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass;
+    }
+
+    private void Update()
+    {
+        torqueText.text = "Torque: " + currentMotorForce.ToString();
     }
 
     private void FixedUpdate()
@@ -240,6 +239,5 @@ public class CarController : MonoBehaviour
             rearLeft.brakeTorque = 0;
             rearRight.brakeTorque = 0;
         }
-       
     }
 }
