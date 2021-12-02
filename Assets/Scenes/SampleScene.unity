@@ -803,7 +803,7 @@ MonoBehaviour:
   maxTorque: 0
   Torque: 0
   Rpm: 0
-  motorForce: 100
+  motorForce: 300
   brakeForce: 500
   handBreakForce: 1000
   maxSteerAngle: 30

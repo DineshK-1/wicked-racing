@@ -99,6 +99,7 @@ public class CarController : MonoBehaviour
         currentMotorForce = ThrottleInput * motorForce;
         currentBrakeForce = BrakeInput * brakeForce;
         currentSteerAngle = SteerInput * maxSteerAngle;
+        isHandBraking = _IM.Handbrake;
     }
 
     private void CalculateBools()
