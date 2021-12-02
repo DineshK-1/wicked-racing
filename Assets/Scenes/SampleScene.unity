@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e71b9408b2d574fa4dd84f4dbf507c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DType: 1
+  DType: 2
   centerOfMass: {x: 0, y: 0, z: 0}
   Torque: 0
   motorForce: 300
@@ -798,6 +798,42 @@ MonoBehaviour:
   handBreakForce: 1500
   maxSteerAngle: 30
   speed: 0
+  TorqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.42257634
+      outSlope: 0.42257634
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1105758
+    - serializedVersion: 3
+      time: 1994.4412
+      value: 2110.3723
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 2592.0354
+      value: 1010.71985
+      inSlope: -2.4860008
+      outSlope: -2.4860008
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1130248
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxRPM: 7000
+  currentRPM: 0
+  wheelsRPM: 0
   isAccelerating: 0
   Braking: 0
   rearSlipLat: 0
@@ -1842,6 +1878,15 @@ MonoBehaviour:
   handBreakForce: 1000
   maxSteerAngle: 25
   speed: 0
+  TorqueCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxRPM: 0
+  currentRPM: 0
+  wheelsRPM: 0
   isAccelerating: 0
   Braking: 0
   rearSlipLat: 0

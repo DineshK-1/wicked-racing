@@ -13,7 +13,17 @@ public class CarController : MonoBehaviour
         Front_Wheel_Drive,
     }
 
+    public int currentGear = 1;
+
     public DriveTrain DType;
+
+    public int Mass;
+
+    [Header("Gear Ratios")]
+    public float FinalDriveRatio;
+    public float[] GearRatios;
+
+    
 
     private IM _IM;
 
@@ -51,6 +61,15 @@ public class CarController : MonoBehaviour
 
     public float speed;
 
+    public AnimationCurve TorqueCurve;
+
+    public float motorRPM;
+    public float minRPM = 700;
+    public float maxRPM = 6800;
+    public float currentRPM;
+    public float wheelRPM;
+    public float Downforce;
+
     [Header("Bools")]
     public bool isAccelerating;
     public bool Braking;
@@ -62,7 +81,10 @@ public class CarController : MonoBehaviour
     public float frontSlipLat;
     public float frontSlipLong;
 
+    [Header("Camera Offset")]
     public Vector3 CamOffset;
+
+    [Header("UI Elements")]
 
     public Text speedText;
     public Text torqueText;
@@ -88,6 +110,7 @@ public class CarController : MonoBehaviour
         _IM = GameObject.Find("InputManager").GetComponent<IM>();
 
         rb = GetComponent<Rigidbody>();
+        rb.mass = Mass;
         rb.centerOfMass = centerOfMass;
     }
 
@@ -104,6 +127,29 @@ public class CarController : MonoBehaviour
         HandleSteering();
         UpdateWheels();
         DetectSlip();
+        CalculateRPM();
+    }
+
+    private void CalculateRPM()
+    {
+        if (currentGear == 1)
+        {
+            motorRPM = 0;
+        }
+
+        
+
+        currentMotorForce = TorqueCurve.Evaluate(motorRPM) * (FinalDriveRatio / GearRatios[currentGear]) * ThrottleInput;
+
+        wheelRPMCalculator();
+    }
+
+    void wheelRPMCalculator()
+    {
+        float sum = 0;
+        sum = frontLeft.rpm + frontRight.rpm + rearRight.rpm + rearLeft.rpm;
+
+        wheelRPM = sum / 4;
     }
 
     void GetInput()
@@ -112,9 +158,8 @@ public class CarController : MonoBehaviour
         BrakeInput = _IM.Brake;
         SteerInput = _IM.Steer;
 
-        currentMotorForce = ThrottleInput * motorForce;
         currentBrakeForce = BrakeInput * brakeForce;
-        currentSteerAngle = SteerInput * maxSteerAngle;
+        currentSteerAngle = Mathf.Lerp(currentSteerAngle, SteerInput * maxSteerAngle,  15 * Time.deltaTime);
         isHandBraking = _IM.Handbrake;
     }
 
@@ -197,23 +242,21 @@ public class CarController : MonoBehaviour
     {
         if (DType == DriveTrain.All_Wheel_Drive)
         {
-            rearLeft.motorTorque = currentMotorForce;
-            rearRight.motorTorque = currentMotorForce;
-            frontLeft.motorTorque = currentMotorForce;
-            frontRight.motorTorque = currentMotorForce;
+            rearLeft.motorTorque = currentMotorForce / 4;
+            rearRight.motorTorque = currentMotorForce / 4;
+            frontLeft.motorTorque = currentMotorForce / 4;
+            frontRight.motorTorque = currentMotorForce / 4;
         }
         else if(DType == DriveTrain.Rear_Wheel_Drive)
         {
-            rearLeft.motorTorque = currentMotorForce;
-            rearRight.motorTorque = currentMotorForce;
+            rearLeft.motorTorque = currentMotorForce / 2;
+            rearRight.motorTorque = currentMotorForce / 2;
         }
         else if (DType == DriveTrain.Front_Wheel_Drive)
         {
-            frontLeft.motorTorque = currentMotorForce;
-            frontRight.motorTorque = currentMotorForce;
+            frontLeft.motorTorque = currentMotorForce / 2;
+            frontRight.motorTorque = currentMotorForce / 2;
         }
-
-
 
         if (isBraking)
         {
