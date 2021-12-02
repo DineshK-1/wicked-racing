@@ -36,15 +36,18 @@ public class CarController : MonoBehaviour
     public float handBreakForce;
     public float maxSteerAngle;
 
-    [SerializeField] private WheelCollider frontLeft;
-    [SerializeField] private WheelCollider rearLeft;
-    [SerializeField] private WheelCollider frontRight;
-    [SerializeField] private WheelCollider rearRight;
+    private GameObject Colliders;
+    private GameObject Meshes;
 
-    [SerializeField] private Transform frontLeftTransform;
-    [SerializeField] private Transform rearLeftTransform;
-    [SerializeField] private Transform frontRightTransform;
-    [SerializeField] private Transform rearRightTransform;
+    private WheelCollider frontLeft;
+    private WheelCollider frontRight;
+    private WheelCollider rearLeft;
+    private WheelCollider rearRight;
+
+    private Transform frontLeftTransform;
+    private Transform frontRightTransform;
+    private Transform rearLeftTransform;
+    private Transform rearRightTransform;
 
     public float speed;
 
@@ -75,6 +78,19 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
+        Colliders = gameObject.transform.Find("WheelColliders").gameObject;
+        Meshes = gameObject.transform.Find("WheelMeshes").gameObject;
+
+        frontLeft = Colliders.transform.Find("Wheel_FL").GetComponent<WheelCollider>();
+        frontRight = Colliders.transform.Find("Wheel_FR").GetComponent<WheelCollider>();
+        rearLeft = Colliders.transform.Find("Wheel_RL").GetComponent<WheelCollider>();
+        rearRight = Colliders.transform.Find("Wheel_RR").GetComponent<WheelCollider>();
+
+        frontLeftTransform = Meshes.transform.Find("Tires.FL").GetComponent<Transform>();
+        frontRightTransform = Meshes.transform.Find("Tires.FR").GetComponent<Transform>();
+        rearLeftTransform = Meshes.transform.Find("Tires.RL").GetComponent<Transform>();
+        rearRightTransform = Meshes.transform.Find("Tires.RR").GetComponent<Transform>();
+
         _IM = GameObject.Find("InputManager").GetComponent<IM>();
 
         rb = GetComponent<Rigidbody>();
@@ -140,8 +156,6 @@ public class CarController : MonoBehaviour
         rearLeft.GetGroundHit(out WheelHit wheelData);
         frontLeft.GetGroundHit(out WheelHit wheelData2);
 
-        
-
         rearSlipLat = wheelData.sidewaysSlip;
         rearSlipLong = wheelData.forwardSlip;
 
@@ -153,10 +167,6 @@ public class CarController : MonoBehaviour
 
         RLForwardSlipText.text = "RL Forward Slip:" + rearSlipLong.ToString() + " RPM:" + rearLeft.rpm;
         RLSidewaySlipText.text = "RL Sideways Slip:" + rearSlipLat.ToString();
-
-        //Debug.Log( "RW Forward Slip:" + rearSlipLong.ToString() + " FW Forward Slip:" + frontSlipLong.ToString());
-        //Debug.Log("RW Sideways Slip:" + rearSlipLat.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
-        // Debug.Log("RW Forward Slip:"+ rearSlipLong.ToString() +" RW Sideways Slip:" + rearSlipLat.ToString() + " FW Forward Slip:" + frontSlipLong.ToString() + " FW Sideways Slip:" + frontSlipLat.ToString());
     }
 
     private void UpdateWheels()
