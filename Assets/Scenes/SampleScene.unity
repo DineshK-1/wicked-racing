@@ -123,81 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &54664956
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 54664957}
-  - component: {fileID: 54664959}
-  - component: {fileID: 54664958}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &54664957
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54664956}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1166081144}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 270.6598}
-  m_SizeDelta: {x: 1280, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &54664958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54664956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &54664959
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54664956}
-  m_CullTransparentMesh: 1
 --- !u!1001 &57038168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,7 +497,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1166081144}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -870,6 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e71b9408b2d574fa4dd84f4dbf507c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _IM: {fileID: 1963390664}
   isAccelerating: 0
   Braking: 0
   centerOfMass: {x: 0, y: 0, z: 0}
@@ -1079,16 +1005,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 613876522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
 --- !u!114 &613876524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,7 +1679,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 54664957}
   - {fileID: 395625977}
   - {fileID: 1696143019}
   m_Father: {fileID: 0}
@@ -1888,6 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e71b9408b2d574fa4dd84f4dbf507c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _IM: {fileID: 0}
   isAccelerating: 0
   Braking: 0
   centerOfMass: {x: 0, y: 0, z: 0}
@@ -2490,7 +2424,7 @@ RectTransform:
   m_Children:
   - {fileID: 1971309578}
   m_Father: {fileID: 1166081144}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2715,13 +2649,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1963390663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de7d98512814f74e828add70653cd07, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a0fd8712f23b214c8c52a76b8e85437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerInput: {fileID: 1963390665}
   Throttle: 0
   Steer: 0
   Brake: 0
+  Handbrake: 0
+  TorqueI: 0
 --- !u!114 &1963390665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2746,9 +2682,41 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1963390664}
+        m_TargetAssemblyTypeName: IM, Assembly-CSharp
+        m_MethodName: OnThrottle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b543c5a2-7134-46bc-9a5a-b8890e3b2300
+    m_ActionName: Car/Throttle[/XInputControllerWindows/rightTrigger,/XInputControllerWindows/rightTrigger,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cdb73221-1d80-4f18-8c41-0da5bb5e4e56
+    m_ActionName: Car/Brake[/XInputControllerWindows/leftTrigger,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 67d29b7f-eea0-4aca-ae8c-e09e968bf7b3
+    m_ActionName: Car/Steer[/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b2aaac9-319c-472f-bbcb-7b2a4c662454
+    m_ActionName: Car/HandBrake[/XInputControllerWindows/buttonWest,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0609ea2f-031b-4ce5-8aac-a52c35ad8e81
+    m_ActionName: Car/Torque[/Keyboard/numpadPlus,/Keyboard/minus]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: XD
   m_DefaultActionMap: Car
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

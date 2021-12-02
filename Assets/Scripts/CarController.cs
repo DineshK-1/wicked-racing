@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    public InputManager IM;
+    public IM _IM;
 
     private float SteerInput;
     private float ThrottleInput;
@@ -92,9 +92,9 @@ public class CarController : MonoBehaviour
 
     void GetInput()
     {
-        ThrottleInput = IM.Throttle;
-        BrakeInput = IM.Brake;
-        SteerInput = IM.Steer;
+        ThrottleInput = _IM.Throttle;
+        BrakeInput = _IM.Brake;
+        SteerInput = _IM.Steer;
 
         currentMotorForce = ThrottleInput * motorForce;
         currentBrakeForce = BrakeInput * brakeForce;
