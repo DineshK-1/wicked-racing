@@ -62,16 +62,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.KeypadMinus)){
-            motorForce -= 50;
-        }
-        if (Input.GetKeyDown(KeyCode.KeypadPlus)){
-            motorForce += 50;
-        }
         torqueText.text = "Torque: " + currentMotorForce.ToString();
-        */
-
     }
 
     private void Start()
@@ -104,6 +95,14 @@ public class CarController : MonoBehaviour
 
     private void CalculateBools()
     {
+        if (BrakeInput > 0)
+        {
+            isBraking = true;
+        }
+        else
+        {
+            isBraking = false;
+        }
         if (currentMotorForce > 0)
         {
             isAccelerating = true;
