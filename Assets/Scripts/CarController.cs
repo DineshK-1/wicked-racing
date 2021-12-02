@@ -27,20 +27,14 @@ public class CarController : MonoBehaviour
     private bool isBraking;
     private bool isHandBraking;
 
-    public bool isAccelerating;
-    public bool Braking;
-
     private Rigidbody rb;
     [SerializeField] private Vector3 centerOfMass;
 
-    [SerializeField] public float maxRpm;
-    [SerializeField] public float maxTorque;
-    [SerializeField] public float Torque;
-    [SerializeField] public float Rpm;
-    [SerializeField] public float motorForce;
-    [SerializeField] public float brakeForce;
-    [SerializeField] public float handBreakForce;
-    [SerializeField] public float maxSteerAngle;
+    public float Torque;
+    public float motorForce;
+    public float brakeForce;
+    public float handBreakForce;
+    public float maxSteerAngle;
 
     [SerializeField] private WheelCollider frontLeft;
     [SerializeField] private WheelCollider rearLeft;
@@ -54,6 +48,11 @@ public class CarController : MonoBehaviour
 
     public float speed;
 
+    [Header("Bools")]
+    public bool isAccelerating;
+    public bool Braking;
+
+    [Header("Slip Values")]
     public float rearSlipLat;
     public float rearSlipLong;
 
@@ -184,13 +183,6 @@ public class CarController : MonoBehaviour
         frontLeft.steerAngle = currentSteerAngle;
         frontRight.steerAngle = currentSteerAngle;
     }
-
-    void ForceCalculator()
-    {
-        Torque = maxTorque;
-        motorForce = (float)((9.5488 / Rpm)* Torque);
-    }
-
 
     void HandleMotor()
     {
