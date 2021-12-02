@@ -137,9 +137,9 @@ public class CarController : MonoBehaviour
             motorRPM = 0;
         }
 
-        
+        motorRPM = minRPM + (wheelRPM * FinalDriveRatio * GearRatios[currentGear]);
 
-        currentMotorForce = TorqueCurve.Evaluate(motorRPM) * (FinalDriveRatio / GearRatios[currentGear]) * ThrottleInput;
+        currentMotorForce = TorqueCurve.Evaluate(motorRPM) * (GearRatios[currentGear] /FinalDriveRatio) * ThrottleInput;
 
         wheelRPMCalculator();
     }
