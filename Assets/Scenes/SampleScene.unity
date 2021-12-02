@@ -804,7 +804,7 @@ MonoBehaviour:
   Torque: 0
   Rpm: 0
   motorForce: 300
-  brakeForce: 500
+  brakeForce: 1000
   handBreakForce: 1000
   maxSteerAngle: 30
   frontLeft: {fileID: 312537592}

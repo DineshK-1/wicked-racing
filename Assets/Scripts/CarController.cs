@@ -6,7 +6,16 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    public IM _IM;
+    public enum DriveTrain
+    {
+        All_Wheel_Drive,
+        Rear_Wheel_Drive,
+        Front_Wheel_Drive,
+    }
+
+    public DriveTrain DType;
+
+    private IM _IM;
 
     private float SteerInput;
     private float ThrottleInput;
@@ -67,6 +76,8 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
+        _IM = GameObject.Find("InputManager").GetComponent<IM>();
+
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass;
     }
@@ -183,10 +194,25 @@ public class CarController : MonoBehaviour
 
     void HandleMotor()
     {
-        rearLeft.motorTorque = currentMotorForce;
-        rearRight.motorTorque = currentMotorForce;
-        frontLeft.motorTorque = currentMotorForce;
-        frontRight.motorTorque = currentMotorForce;
+        if (DType == DriveTrain.All_Wheel_Drive)
+        {
+            rearLeft.motorTorque = currentMotorForce;
+            rearRight.motorTorque = currentMotorForce;
+            frontLeft.motorTorque = currentMotorForce;
+            frontRight.motorTorque = currentMotorForce;
+        }
+        else if(DType == DriveTrain.Rear_Wheel_Drive)
+        {
+            rearLeft.motorTorque = currentMotorForce;
+            rearRight.motorTorque = currentMotorForce;
+        }
+        else if (DType == DriveTrain.Front_Wheel_Drive)
+        {
+            frontLeft.motorTorque = currentMotorForce;
+            frontRight.motorTorque = currentMotorForce;
+        }
+
+
 
         if (isBraking)
         {
