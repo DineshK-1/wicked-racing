@@ -370,7 +370,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 25
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -763,7 +763,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 25
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -834,11 +834,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 6800
       value: 257.62024
-      inSlope: -0.13317835
-      outSlope: -0.13317835
+      inSlope: -0.06361745
+      outSlope: -0.06361745
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.14344825
+      inWeight: 0.1334404
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1362,7 +1362,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 25
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -1589,7 +1589,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 25
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -2712,11 +2712,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerInput: {fileID: 1963390665}
+  m_GearUp:
+    m_Name: Gear Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a10f8816-1b6c-4ba3-91aa-5b45139b7faf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  m_GearDown:
+    m_Name: Gear Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7d4b8538-c8eb-4b81-8cd6-8d67144ae2b4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
   Throttle: 0
   Steer: 0
   Brake: 0
   Handbrake: 0
-  TorqueI: 0
 --- !u!114 &1963390665
 MonoBehaviour:
   m_ObjectHideFlags: 0
