@@ -38,9 +38,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Torque",
+                    "name": "GearUp",
                     "type": "Button",
-                    "id": "0609ea2f-031b-4ce5-8aac-a52c35ad8e81",
+                    "id": "b27ffb79-ff49-47b0-809e-d2aee4200f85",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "GearDown",
+                    "type": "Button",
+                    "id": "6c2d921f-e2a2-4ca5-b8c9-ad65066b8efb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -181,23 +189,45 @@
                 },
                 {
                     "name": "",
-                    "id": "ec577b32-1f98-44ab-9840-d4fa140f7d9d",
+                    "id": "e68965da-4c13-4316-9b84-dc14b1eb55e3",
                     "path": "<Keyboard>/numpadPlus",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Torque",
+                    "action": "GearUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5bfd8702-edbb-4057-a3f2-cf7fa715fe4d",
-                    "path": "<Keyboard>/minus",
+                    "id": "077e0066-ab22-4de3-bf0a-6fd37fd3a64f",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Torque",
+                    "action": "GearUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ac0e5d7-6d54-4168-ab79-5ea0b14ad506",
+                    "path": "<Keyboard>/numpadMinus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GearDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5885c19c-7311-45b2-89c6-c310e9c15869",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GearDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

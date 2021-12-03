@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -109,6 +110,9 @@ public class CarController : MonoBehaviour
 
         _IM = GameObject.Find("InputManager").GetComponent<IM>();
 
+        _IM.m_GearUp.started += GearUp;
+        _IM.m_GearDown.started += GearDown;
+
         rb = GetComponent<Rigidbody>();
         rb.mass = Mass;
         rb.centerOfMass = centerOfMass;
@@ -130,6 +134,22 @@ public class CarController : MonoBehaviour
         CalculateRPM();
     }
 
+    private void GearUp(InputAction.CallbackContext obj)
+    {
+        if (currentGear <= GearRatios.Length - 2)
+        {           
+            currentGear += 1;
+        }
+    }
+
+    private void GearDown(InputAction.CallbackContext obj)
+    {
+        if (currentGear >= 0)
+        {
+            currentGear -= 1;
+        }
+    }
+
     private void CalculateRPM()
     {
         if (currentGear == 1)
@@ -139,7 +159,7 @@ public class CarController : MonoBehaviour
 
         motorRPM = minRPM + (wheelRPM * FinalDriveRatio * GearRatios[currentGear]);
 
-        currentMotorForce = TorqueCurve.Evaluate(motorRPM) * (GearRatios[currentGear] /FinalDriveRatio) * ThrottleInput;
+        currentMotorForce = TorqueCurve.Evaluate(motorRPM) * GearRatios[currentGear] * FinalDriveRatio * ThrottleInput;
 
         wheelRPMCalculator();
     }
@@ -194,7 +214,7 @@ public class CarController : MonoBehaviour
 
     private void DetectSlip()
     {
-        float speed = rb.velocity.magnitude * 3.6f;
+        float speed = rb.velocity.magnitude * 0.621371192f;
         speedText.text = "Speed: " + speed.ToString();
 
         rearLeft.GetGroundHit(out WheelHit wheelData);

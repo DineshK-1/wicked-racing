@@ -11,12 +11,13 @@ public class IM : MonoBehaviour
     private InputAction m_Throttle;
     private InputAction m_Brake;
     private InputAction m_HandBrake;
+    public InputAction m_GearUp;
+    public InputAction m_GearDown;
 
     public float Throttle;
     public float Steer;
     public float Brake;
     public bool Handbrake;
-    public bool TorqueI;
 
     private void Awake()
     { 
@@ -24,6 +25,8 @@ public class IM : MonoBehaviour
         m_Steer = m_PlayerInput.actions["Steer"];
         m_Brake = m_PlayerInput.actions["Brake"];
         m_HandBrake = m_PlayerInput.actions["HandBrake"];
+        m_GearUp = m_PlayerInput.actions["GearUp"];
+        m_GearDown = m_PlayerInput.actions["GearDown"];
 
         m_Throttle.performed += M_Throttle_performed;
         m_Throttle.canceled += M_Throttle_canceled;
